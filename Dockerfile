@@ -7,9 +7,10 @@ RUN yum search kernel-devel --showduplicates && \
     yum install -y sudo
 
 # Sudo access
-RUN useradd -m docker
-RUN echo "docker:1234" | chpasswd
-RUN usermod -G sudo docker
+RUN useradd -m test
+RUN echo "test:1234" | chpasswd
+RUN usermod -aG wheel test
+RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Maintain the pod alive
 USER docker
