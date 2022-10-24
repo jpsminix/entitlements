@@ -3,7 +3,7 @@ FROM registry.redhat.io/ubi7/ubi:latest
 # Sudo access
 RUN useradd -m docker
 RUN echo "1234:1234" | chpasswd
-RUN usermod -G wheel docker
+RUN usermod -G sudo docker
 
 # Entitlement test
 RUN rm /etc/rhsm-host
